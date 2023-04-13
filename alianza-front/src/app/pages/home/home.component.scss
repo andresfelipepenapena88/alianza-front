@@ -1,0 +1,25 @@
+.logo {
+    img {
+        margin: 20px;
+        max-width: 150px;
+    }
+}
+
+.side-bar {
+    margin-left: 80px;
+    .side-bar-item {
+        font-weight: bold;
+        color: #0d6efd;
+        svg {
+            vertical-align: -0.125em;
+        }
+    }
+    .nav-link {
+        color: #595c5f;
+        font-weight: 600;
+        cursor: pointer;
+    }
+    .active {
+        color: #0d6efd;
+    }
+}

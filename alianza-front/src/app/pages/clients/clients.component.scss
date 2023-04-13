@@ -1,0 +1,21 @@
+.container {
+    .table-section {
+        .table-title {
+            color: #0d6efd;
+        }
+        table {
+            text-align: center;
+            border-color: #595c5f;
+        }
+    }
+    .cursor {
+        cursor: pointer;
+    }
+    .cursor:hover {
+        color: #0d6efd;
+    }
+    .spinner {
+        width: 4rem;
+        height: 4rem;
+    }
+}
