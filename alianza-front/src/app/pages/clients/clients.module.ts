@@ -13,6 +13,7 @@ import { ClientsService } from 'src/app/services/clients.service';
 import { EffectsModule } from '@ngrx/effects';
 import { ClientsEffects } from './redux/clients.effects';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     StoreModule.forFeature(fromClientsReducer.clientsReducerKey, fromClientsReducer.clientsReducer),
     EffectsModule.forFeature(ClientsEffects),
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   exports: [ ClientsComponent ],
   providers: [ ClientsService ]

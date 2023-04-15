@@ -22,8 +22,10 @@
         </div>
         <div class="col-12 col-md-5 mt-3">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Enter shared key" aria-describedby="search">
-                <button class="btn btn-outline-secondary" type="button" id="search">Search</button>
+                <input type="text" [formControl]="searchBySharedKey" (keyup.enter)="searchClient($event)"
+                    class="form-control" placeholder="Enter shared key" aria-describedby="search">
+                <button class="btn btn-outline-secondary" type="button" id="search"
+                    (click)="searchClient(null)">Search</button>
             </div>
         </div>
         <div class="col-12 col-md-7 mt-3" *ngIf="!showAdvancedSearchComponent">
@@ -31,8 +33,18 @@
         </div>
         <div class="col-12 col-md-8" *ngIf="showAdvancedSearchComponent">
             <div class="card text-bg-light">
+                <div class="close-button">
+                    <button type="button" class="btn-close" (click)="showAdvancedSearchComponent = !showAdvancedSearchComponent"></button>
+                </div>
+                <div class="col-12" *ngIf="clientsTableSpinner">
+                    <div class="d-flex justify-content-center">
+                        <div class="spinner-border spinner mt-5 text-primary">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </div>
                 <div class="card-body">
-                    <app-advanced-search (advancedSearch)="advancedSearch($event)"></app-advanced-search>
+                    <app-client-form (sendForm)="sendClientForm($event)" [isAdd]="false"></app-client-form>
                 </div>
             </div>
         </div>
@@ -41,7 +53,7 @@
         <div class="col-12" *ngIf="clientsTableSpinner">
             <div class="d-flex justify-content-center">
                 <div class="spinner-border spinner mt-5 text-primary">
-                  <span class="visually-hidden">Loading...</span>
+                    <span class="visually-hidden">Loading...</span>
                 </div>
             </div>
         </div>
@@ -54,7 +66,8 @@
                         <th>Business ID</th>
                         <th>E-mail</th>
                         <th>Phone</th>
-                        <th>Data Added</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
                         <th>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-pencil" viewBox="0 0 16 16">
@@ -70,7 +83,8 @@
                         <td>{{ client.name }}</td>
                         <td>{{ client.email }}</td>
                         <td>{{ client.phone }}</td>
-                        <td>{{ client.addedDate }}</td>
+                        <td>{{ client.startDate }}</td>
+                        <td>{{ client.endDate }}</td>
                         <td class="cursor">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-pencil" viewBox="0 0 16 16">
@@ -88,15 +102,12 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">New Client</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    #addClientModal></button>
             </div>
             <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <app-client-form (sendForm)="sendClientForm($event)" [isAdd]="true"></app-client-form>
             </div>
         </div>
     </div>

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdvancedSearchComponent } from './advanced-search.component';
+import { ClientFormComponent } from './client-form.component';
 
 describe('AdvancedSearchComponent', () => {
-  let component: AdvancedSearchComponent;
-  let fixture: ComponentFixture<AdvancedSearchComponent>;
+  let component: ClientFormComponent;
+  let fixture: ComponentFixture<ClientFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdvancedSearchComponent ]
+      declarations: [ ClientFormComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AdvancedSearchComponent);
+    fixture = TestBed.createComponent(ClientFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,69 @@
+<form [formGroup]="clientForm" (ngSubmit)="sendFormButton()">
+  <div class="row align-items-center">
+    <div class="col-3">
+      <label for="name" class="col-form-label">Name</label>
+    </div>
+    <div class="col-9">
+      <input type="text" id="name" class="form-control" formControlName="name"
+        [ngClass]="{ 'is-invalid': (formSubmited || clientForm.controls.name.touched) && clientForm.controls.name.errors?.['required'] }">
+      <div class="invalid-feedback">
+        Campo Obligatorio
+      </div>
+    </div>
+  </div>
+  <div class="row align-items-center mt-2">
+    <div class="col-3">
+      <label for="phone" class="col-form-label">Phone</label>
+    </div>
+    <div class="col-9">
+      <input type="text" id="phone" class="form-control" formControlName="phone">
+    </div>
+  </div>
+  <div class="row align-items-center mt-2">
+    <div class="col-3">
+      <label for="email" class="col-form-label">E-mail</label>
+    </div>
+    <div class="col-9">
+      <input type="text" id="email" class="form-control" formControlName="email" 
+        [ngClass]="{ 'is-invalid': (formSubmited || clientForm.controls.email.touched) && (clientForm.controls.email.errors?.['required'] || clientForm.controls.email.errors?.['email']) }">
+      <div class="invalid-feedback" *ngIf="clientForm.controls.email.errors?.['required']">
+        Campo Obligatorio
+      </div>
+      <div class="invalid-feedback" *ngIf="clientForm.controls.email.errors?.['email']">
+        Este campo no parece un E-Mail
+      </div>
+    </div>
+  </div>
+  <div class="row align-items-center mt-2">
+    <div class="col-3">
+      <label for="startDate" class="col-form-label">StartDate</label>
+    </div>
+    <div class="col-9">
+      <input type="date" id="startDate" class="form-control" formControlName="startDate"
+        [ngClass]="{ 'is-invalid': (formSubmited || clientForm.controls.startDate.touched) && clientForm.controls.startDate.errors?.['required'] }">
+      <div class="invalid-feedback" *ngIf="clientForm.controls.startDate.errors?.['required']">
+        Campo Obligatorio
+      </div>
+      <div class="invalid-feedback" *ngIf="clientForm.controls.startDate.errors?.['startDateIsOlderThanEndDate']">
+        Start date debe ser menor a EndDate
+      </div>
+    </div>
+  </div>
+  <div class="row align-items-center mt-2">
+    <div class="col-3">
+      <label for="endDate" class="col-form-label">EndDate</label>
+    </div>
+    <div class="col-9">
+      <input type="date" id="endDate" class="form-control" formControlName="endDate"
+        [ngClass]="{ 'is-invalid': (formSubmited || clientForm.controls.endDate.touched) && clientForm.controls.endDate.errors?.['startDateIsOlderThanEndDate'] }">
+      <div class="invalid-feedback" *ngIf="clientForm.controls.endDate.errors?.['startDateIsOlderThanEndDate']">
+        Start date debe ser menor a EndDate
+      </div>
+    </div>
+  </div>
+  <div class="row align-items-center mt-2">
+    <div class="col-12 d-grid gap-2 d-md-flex justify-content-md-end">
+      <button type="submit" class="btn btn-primary">OK</button>
+    </div>
+  </div>
+</form>

@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AdvancedSearchComponent } from './advanced-search/advanced-search.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ClientFormComponent } from './client-form/client-form.component';
 
 
 
 @NgModule({
   declarations: [
-    AdvancedSearchComponent
+    ClientFormComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   exports: [
-    AdvancedSearchComponent
+    ClientFormComponent
   ]
 })
 export class ComponentsModule { }

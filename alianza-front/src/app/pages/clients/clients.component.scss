@@ -1,4 +1,10 @@
 .container {
+    .close-button {
+        width: 100%;
+        display: flex;
+        justify-content: end;
+        padding: 5px;
+    }
     .table-section {
         .table-title {
             color: #0d6efd;

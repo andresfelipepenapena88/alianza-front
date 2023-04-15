@@ -1,9 +1,10 @@
 export interface ClientInfo {
-    sharedKey: string;
+    sharedKey?: string;
     name: string;
     phone: string;
     email: string;
-    addedDate: string;
+    startDate: string;
+    endDate: string;
 }
 
 export interface AddClientRequest {
