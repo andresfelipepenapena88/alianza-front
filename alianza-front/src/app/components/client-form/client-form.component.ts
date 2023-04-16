@@ -32,11 +32,11 @@ export class ClientFormComponent implements OnInit {
   ngOnInit(): void {
     this.clientForm.controls['startDate'].addAsyncValidators(this.validateDates('endDate'));
     this.clientForm.controls['endDate'].addAsyncValidators(this.validateDates('startDate'));
-    this.clientForm.controls['email'].setValidators([ Validators.email ]);
+    this.clientForm.controls['email'].addValidators([ Validators.email ]);
     if (this.isAdd) {
-      this.clientForm.controls['name'].setValidators([ Validators.required ]);
+      this.clientForm.controls['name'].addValidators([ Validators.required ]);
       this.clientForm.controls['email'].addValidators([ Validators.required ]);
-      this.clientForm.controls['startDate'].setValidators([ Validators.required ]);
+      this.clientForm.controls['startDate'].addValidators([ Validators.required ]);
     }
   }
 

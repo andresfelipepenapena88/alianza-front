@@ -5,15 +5,17 @@ import { ClientsComponent } from './pages/clients/clients.component';
 import { ClientLookHistoryComponent } from './pages/client-look-history/client-look-history.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { 
     path: 'home', component: HomeComponent,
     children: [
+      { path: '', redirectTo: 'clients', pathMatch: 'full'},
       { path: 'clients', component: ClientsComponent },
       { path: 'client-history', component: ClientLookHistoryComponent },
-      { path: '**', redirectTo: '/clients', pathMatch: 'full'}
+      { path: '**', redirectTo: 'clients', pathMatch: 'full'}
     ]
   },
-  { path: '**', redirectTo: '/home', pathMatch: 'full'}
+  { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];
 
 @NgModule({
